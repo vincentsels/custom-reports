@@ -1,0 +1,10 @@
+<?php
+   $s_plugin_CustomReports_custom_reports = 'Custom Reports';
+   $s_plugin_CustomReports_custom_report = 'Custom Report';
+   $s_plugin_CustomReports_configuration = 'Custom Reports: configuration';
+   $s_plugin_CustomReports_load_report = 'Load report';
+   $s_plugin_CustomReports_update = 'Update';
+
+   $s_plugin_CustomReports_admin_threshold = 'Admin threshold';
+   $s_plugin_CustomReports_view_custom_reports_threshold = 'View custom reports threshold';
+?>

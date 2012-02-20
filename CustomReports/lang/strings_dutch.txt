@@ -1,0 +1,10 @@
+<?php
+   $s_plugin_CustomReports_custom_reports = 'Rapporten op maat';
+   $s_plugin_CustomReports_custom_report = 'Rapport op maat';
+   $s_plugin_CustomReports_configuration = 'Rapporten op maat: configuratie';
+   $s_plugin_CustomReports_load_report = 'Laad rapport';
+   $s_plugin_CustomReports_update = 'Aanpassen';
+
+   $s_plugin_CustomReports_admin_threshold = 'Drempelwaarde voor administratierechten';
+   $s_plugin_CustomReports_view_custom_reports_threshold = 'Drempelwaarde voor bekijken rapporten op maat';
+?>
