@@ -1,8 +1,8 @@
 <?php
 access_ensure_global_level( plugin_config_get( 'view_custom_reports_threshold' ) );
-html_page_top( plugin_lang_get( 'custom_reports' ) );
 
 $f_selected_report_id = gpc_get_string( 'report_id', null );
+$f_export = gpc_get_bool( 'export', false );
 $f_selected_report    = array();
 
 $t_result = array();
@@ -13,8 +13,10 @@ if ( !is_null( $f_selected_report_id ) ) {
 	$t_query_result         = db_query_bound( $t_query_query );
 	$f_selected_report      = db_fetch_array( $t_query_result );
 
+	# Remove special html quote chars
+	$t_report_query = htmlspecialchars_decode( $f_selected_report['query'], ENT_QUOTES );
 	# Remove trailing ;
-	$t_report_query  = htmlspecialchars_decode( rtrim( $f_selected_report['query'], ';' ) );
+	$t_report_query = rtrim( $t_report_query, ';' );
 	$t_report_result = db_query_bound( $t_report_query );
 
 	# Populate the result array
@@ -22,6 +24,14 @@ if ( !is_null( $f_selected_report_id ) ) {
 		$t_result[] = $row;
 	}
 }
+
+if ( $f_export && !is_null( $f_selected_report_id ) && count( $t_result ) > 0 ) {
+	# Export to excel
+	$xls = new ExcelExporter;
+	$xls->addWorksheet('Result', $t_result);
+	$xls->sendWorkbook($f_selected_report['name'] . '.xls');
+} else {
+	html_page_top( plugin_lang_get( 'custom_reports' ) );
 ?>
 
 <br/>
@@ -49,7 +59,14 @@ if ( count( $f_selected_report ) > 0 ) {
 <table class="width100" cellspacing="1">
 	<tr>
 		<td class="form-title" colspan="100%">
-			<?php echo plugin_lang_get( 'custom_report' ) . ': ' . $f_selected_report['name'] ?>
+			<?php
+				echo $f_selected_report['name'];
+				echo ' <span style="font-weight:normal">';
+				$t_url = plugin_page( 'custom_reports_page' );
+				$t_url .= '&report_id=' . $f_selected_report_id . '&' . 'export=true';
+				print_bracket_link( $t_url, plugin_lang_get( 'export_to_excel' ) );
+				echo '</span>';
+			?>
 		</td>
 	</tr>
 	<tr class="row-category">
@@ -80,4 +97,5 @@ if ( count( $f_selected_report ) > 0 ) {
 
 <?php
 html_page_bottom();
+}
 ?>

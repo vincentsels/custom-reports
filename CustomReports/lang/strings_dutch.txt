@@ -3,6 +3,8 @@
    $s_plugin_CustomReports_custom_report = 'Rapport op maat';
    $s_plugin_CustomReports_configuration = 'Rapporten op maat: configuratie';
    $s_plugin_CustomReports_load_report = 'Laad rapport';
+   $s_plugin_CustomReports_export_to_excel = 'Exporteer naar Excel';
+   $s_plugin_CustomReports_immediate_export = 'Onmiddellijk exporteren naar Excel';
 
    $s_plugin_CustomReports_add_new_report = 'Nieuw rapport toevoegen';
    $s_plugin_CustomReports_report_name = 'Rapportnaam';

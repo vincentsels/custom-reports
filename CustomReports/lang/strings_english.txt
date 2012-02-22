@@ -3,6 +3,8 @@
    $s_plugin_CustomReports_custom_report = 'Custom Report';
    $s_plugin_CustomReports_configuration = 'Custom Reports: configuration';
    $s_plugin_CustomReports_load_report = 'Load report';
+   $s_plugin_CustomReports_export_to_excel = 'Export to Excel';
+   $s_plugin_CustomReports_immediate_export = 'Immediately export to Excel';
 
    $s_plugin_CustomReports_add_new_report = 'Add new report';
    $s_plugin_CustomReports_report_name = 'Report name';
