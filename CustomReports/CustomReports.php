@@ -21,8 +21,8 @@ class CustomReportsPlugin extends MantisPlugin {
 			array( 'CreateTableSQL', array( plugin_table( 'reports' ), "
 						id                 I       NOTNULL UNSIGNED AUTOINCREMENT PRIMARY,
 						name               C(32)   NOTNULL,
-						view_threhold      I2      NOTNULL DEFAULT 50,
-						query              XL      NOTNULL
+						view_threshold     I2,
+						query              XL
 						" ) )
 		);
 	}

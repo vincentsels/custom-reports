@@ -2,6 +2,9 @@
 auth_reauthenticate();
 access_ensure_global_level( plugin_config_get( 'admin_threshold' ) );
 html_page_top( plugin_lang_get( 'configuration' ) );
+
+print_manage_menu();
+print_custom_report_config_menu( 'config_page' );
 ?>
 
 <br/>
@@ -24,7 +27,7 @@ html_page_top( plugin_lang_get( 'configuration' ) );
 			</td>
 		</tr>
 		<tr>
-			<td class="center" colspan="2"><input type="submit" value="<?php echo plugin_lang_get( 'update' ) ?>"/></td>
+			<td class="center" colspan="2"><input type="submit" value="<?php echo lang_get( 'edit_link' ) ?>"/></td>
 		</tr>
 	</table>
 </form>

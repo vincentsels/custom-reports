@@ -3,8 +3,14 @@
    $s_plugin_CustomReports_custom_report = 'Custom Report';
    $s_plugin_CustomReports_configuration = 'Custom Reports: configuration';
    $s_plugin_CustomReports_load_report = 'Load report';
-   $s_plugin_CustomReports_update = 'Update';
 
+   $s_plugin_CustomReports_add_new_report = 'Add new report';
+   $s_plugin_CustomReports_report_name = 'Report name';
+   $s_plugin_CustomReports_view_threshold = 'View threshold';
+   $s_plugin_CustomReports_query = 'Query';
+
+   $s_plugin_CustomReports_manage_reports = 'Manage reports';
+   $s_plugin_CustomReports_general_configuration = 'Plugin configuration';
    $s_plugin_CustomReports_admin_threshold = 'Admin threshold';
    $s_plugin_CustomReports_view_custom_reports_threshold = 'View custom reports threshold';
 ?>

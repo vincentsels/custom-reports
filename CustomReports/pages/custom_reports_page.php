@@ -14,7 +14,7 @@ if ( !is_null( $f_selected_report_id ) ) {
 	$f_selected_report      = db_fetch_array( $t_query_result );
 
 	# Remove trailing ;
-	$t_report_query  = rtrim( $f_selected_report['query'], ';' );
+	$t_report_query  = htmlspecialchars_decode( rtrim( $f_selected_report['query'], ';' ) );
 	$t_report_result = db_query_bound( $t_report_query );
 
 	# Populate the result array
