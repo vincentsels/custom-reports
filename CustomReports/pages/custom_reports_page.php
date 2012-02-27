@@ -27,8 +27,8 @@ if ( !is_null( $f_selected_report_id ) ) {
 
 if ( $f_export && !is_null( $f_selected_report_id ) && count( $t_result ) > 0 ) {
 	# Export to excel
-	$xls = new ExcelExporter;
-	$xls->addWorksheet('Result', $t_result);
+	$xls = new ExcelExporterIncludingHeader;
+	$xls->addWorksheetWithHeader('Result', $t_result);
 	$xls->sendWorkbook($f_selected_report['name'] . '.xls');
 } else {
 	html_page_top( plugin_lang_get( 'custom_reports' ) );

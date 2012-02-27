@@ -9,7 +9,7 @@ class CustomReportsPlugin extends MantisPlugin {
         $this->version = '0.1';
         $this->requires = array(
            'MantisCore' => '1.2.0',
-		   'ArrayExportExcel' => '0.1'
+		   'ArrayExportExcel' => '0.2'
         );
 
         $this->author = 'Vincent Sels';
