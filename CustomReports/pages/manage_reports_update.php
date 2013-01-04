@@ -8,6 +8,7 @@ $f_report_id = gpc_get_int( 'report_id', null );
 $f_report_name = gpc_get_string( 'report_name', null );
 $f_view_threshold = gpc_get_string( 'view_threshold', null );
 $f_query = htmlspecialchars( gpc_get_string( 'query', null ), ENT_QUOTES );
+$f_include_period = gpc_get_bool( 'include_period', false );
 
 $t_test_query = ' ' . $f_query . ' ';
 
@@ -30,13 +31,14 @@ $t_reports_table = plugin_table( 'reports' );
 
 if ( empty( $f_report_id ) ) {
 	# Insert new report
-	$t_query = "INSERT INTO $t_reports_table (name, view_threshold, query)
-				VALUES ('$f_report_name', '$f_view_threshold', '$f_query')";
+	$t_query = "INSERT INTO $t_reports_table (name, view_threshold, query, include_period)
+				VALUES ('$f_report_name', '$f_view_threshold', '$f_query', $f_include_period)";
 	db_query_bound( $t_query );
 } else {
 	# Update existing report
 	$t_query = "UPDATE $t_reports_table
-				   SET name = '$f_report_name', view_threshold = '$f_view_threshold', query = '$f_query'
+				   SET name = '$f_report_name', view_threshold = '$f_view_threshold',
+				       query = '$f_query', include_period = $f_include_period
 				 WHERE id = $f_report_id";
 	db_query_bound( $t_query );
 }

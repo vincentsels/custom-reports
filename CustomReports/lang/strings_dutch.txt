@@ -5,6 +5,10 @@
    $s_plugin_CustomReports_load_report = 'Laad rapport';
    $s_plugin_CustomReports_export_to_excel = 'Exporteer naar Excel';
    $s_plugin_CustomReports_immediate_export = 'Onmiddellijk exporteren naar Excel';
+   $s_plugin_CustomReports_include_period_parameters = 'Periode als parameter';
+   $s_plugin_CustomReports_period_start = 'Begin periode';
+   $s_plugin_CustomReports_period_end = 'Einde periode';
+   $s_plugin_CustomReports_include_period_parameters_info = 'Hiermee kunt u van :period_start en :period_end in uw query gebruik maken. Bij het opvragen van dit rapport wordt een periode gevraagd.';
 
    $s_plugin_CustomReports_add_new_report = 'Nieuw rapport toevoegen';
    $s_plugin_CustomReports_report_name = 'Rapportnaam';

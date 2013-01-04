@@ -9,6 +9,7 @@ class CustomReportsPlugin extends MantisPlugin {
         $this->version = '0.2';
         $this->requires = array(
            'MantisCore' => '1.2.0',
+           'jQuery' => '1.8.2',
 		   'ArrayExportExcel' => '0.2'
         );
 
@@ -24,7 +25,8 @@ class CustomReportsPlugin extends MantisPlugin {
 						name               C(32)   NOTNULL,
 						view_threshold     I2,
 						query              XL
-						" ) )
+						" ) ),
+            array( 'AddColumnSQL', array( plugin_table( 'reports' ), 'include_period L NOTNULL DEFAULT 0' ) ),
 		);
 	}
 

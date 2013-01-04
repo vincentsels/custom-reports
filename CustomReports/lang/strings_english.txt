@@ -5,6 +5,10 @@
    $s_plugin_CustomReports_load_report = 'Load report';
    $s_plugin_CustomReports_export_to_excel = 'Export to Excel';
    $s_plugin_CustomReports_immediate_export = 'Immediately export to Excel';
+   $s_plugin_CustomReports_include_period_parameters = 'Period as parameter';
+   $s_plugin_CustomReports_period_start = 'Period start';
+   $s_plugin_CustomReports_period_end = 'Period end';
+   $s_plugin_CustomReports_include_period_parameters_info = 'Allows you to use :period_start and :period_end in your query. If set, the user is asked to enter a period upon loading this report.';
 
    $s_plugin_CustomReports_add_new_report = 'Add new report';
    $s_plugin_CustomReports_report_name = 'Report name';

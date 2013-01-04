@@ -2,6 +2,8 @@
 access_ensure_global_level( plugin_config_get( 'view_custom_reports_threshold' ) );
 
 $f_selected_report_id = gpc_get_string( 'report_id', null );
+$f_param_period_start = gpc_get_string( 'param_period_start', first_day_of_month( -1 ) );
+$f_param_period_end = gpc_get_string( 'param_period_end', last_day_of_month( -1 ) );
 $f_export = gpc_get_bool( 'export', false );
 $f_selected_report    = array();
 
@@ -15,8 +17,18 @@ if ( !is_null( $f_selected_report_id ) ) {
 
 	# Remove special html quote chars
 	$t_report_query = htmlspecialchars_decode( $f_selected_report['query'], ENT_QUOTES );
+
 	# Remove trailing ;
 	$t_report_query = rtrim( $t_report_query, ';' );
+
+    # Fill in parameters
+    if ( $f_param_period_start != null && $f_param_period_end != null ) {
+        $t_startdate  = strtotime_safe( $f_param_period_start );
+        $t_enddate    = strtotime_safe( $f_param_period_end );
+        $t_report_query = str_ireplace( PLUGIN_CR_PARAM_PERIOD_START, $t_startdate, $t_report_query );
+        $t_report_query = str_ireplace( PLUGIN_CR_PARAM_PERIOD_END, $t_enddate, $t_report_query );
+    }
+
 	$t_report_result = db_query_bound( $t_report_query );
 
 	# Populate the result array
@@ -41,9 +53,21 @@ if ( $f_export && !is_null( $f_selected_report_id ) && count( $t_result ) > 0 ) 
 			<td class="center">
 				<form action="<?php echo plugin_page( 'custom_reports_page' ) ?>" method="post">
 					<?php echo plugin_lang_get( 'custom_report' ) ?>
-					<select name="report_id">
+					<select id="report_id" name="report_id">
 						<?php print_custom_report_option_list( $f_selected_report_id ) ?>
 					</select>
+                    <div id="include_period" class="hidden">
+                        <?php
+                        echo plugin_lang_get( 'period_start' ) . ': ';
+                        echo '<input type="text" size="8" maxlength="10" autocomplete="off" id="param_period_start" name="param_period_start" value="' . $f_param_period_start . '">';
+                        date_print_calendar( 'period_start_cal' );
+                        date_finish_calendar( 'period_start', 'period_start_cal' );
+                        echo ' - ' . plugin_lang_get( 'period_end' ) . ': ';
+                        echo '<input type="text" size="8" maxlength="10" autocomplete="off" id="param_period_end" name="param_period_end" value="' . $f_param_period_end . '">';
+                        date_print_calendar( 'period_end_cal' );
+                        date_finish_calendar( 'period_end', 'period_end_cal' );
+                        ?>
+                    </div>
 					<input type="submit" value="<?php echo plugin_lang_get( 'load_report' ) ?>"/>
 				</form>
 			</td>
@@ -94,6 +118,29 @@ if ( count( $f_selected_report ) > 0 ) {
 </table>
 
 <?php } ?>
+
+    <script>
+        function toggle_period_section() {
+            var report_id = jQuery('#report_id').val();
+            jQuery.get("<?php echo plugin_page( 'action_get_report_data', false ) ?>", { report_id : report_id }, function(data) {
+                var periodSection = jQuery("#include_period");
+                var reportData = jQuery.parseJSON(data);
+                if (reportData.include_period === "1") {
+                    periodSection.show();
+                } else {
+                    periodSection.hide();
+                }
+            });
+        }
+
+        jQuery('#report_id').change(function() {
+            toggle_period_section();
+        });
+
+        jQuery(document).ready(function() {
+            toggle_period_section();
+        });
+    </script>
 
 <?php
 html_page_bottom();

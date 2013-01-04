@@ -10,6 +10,7 @@ $f_report_id = gpc_get_int( 'report_id', null );
 $t_report_name = null;
 $t_view_threshold = null;
 $t_query = null;
+$t_include_period = null;
 
 if ( !empty( $f_report_id ) ) {
 	$t_reports_table = plugin_table( 'reports' );
@@ -20,6 +21,7 @@ if ( !empty( $f_report_id ) ) {
 		$t_report_name = $t_report['name'];
 		$t_view_threshold = $t_report['view_threshold'];
 		$t_query = $t_report['query'];
+        $t_include_period = $t_report['include_period'];
 	}
 }
 
@@ -58,6 +60,12 @@ print_custom_report_config_menu( plugin_page( 'manage_reports_overview_page' ) )
 			<td><textarea rows="10" cols="50" name="query"><?php echo $t_query ?></textarea>
 			</td>
 		</tr>
+        <tr <?php echo helper_alternate_class() ?>>
+            <td class="category"><?php echo plugin_lang_get( 'include_period_parameters' ) ?><br/>
+            <td><input type="checkbox" name="include_period"<?php echo $t_include_period ? " checked=checked" : "" ?>>
+            <?php echo plugin_lang_get( 'include_period_parameters_info' ) ?>
+            </td>
+        </tr>
 		<tr>
 			<td class="center" colspan="100%"><input type="submit" value="<?php echo lang_get( 'update' ) ?>"/></td>
 		</tr>
