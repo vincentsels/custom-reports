@@ -6,7 +6,7 @@ class CustomReportsPlugin extends MantisPlugin {
         $this->description = 'Custom Reporting plugin that allows custom sql queries to be executed in Mantis.';
         $this->page = 'config_page';
 
-        $this->version = '0.1';
+        $this->version = '0.2';
         $this->requires = array(
            'MantisCore' => '1.2.0',
 		   'ArrayExportExcel' => '0.2'

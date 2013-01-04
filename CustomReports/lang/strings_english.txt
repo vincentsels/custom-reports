@@ -15,4 +15,7 @@
    $s_plugin_CustomReports_general_configuration = 'Plugin configuration';
    $s_plugin_CustomReports_admin_threshold = 'Admin threshold';
    $s_plugin_CustomReports_view_custom_reports_threshold = 'View custom reports threshold';
+
+   $s_plugin_CustomReports_update_successful = 'Query updated successfully.';
+   $s_plugin_CustomReports_query_invalid_keywords = 'Query may only contain SELECT\'s and no DDL or DCL keywords.';
 ?>

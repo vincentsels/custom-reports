@@ -8,6 +8,12 @@ html_page_top2();
 print_manage_menu();
 print_custom_report_config_menu( 'manage_reports_overview_page' );
 
+if ( gpc_get_bool( 'success', false ) === true ) {
+    echo '<br /><div class="center">', plugin_lang_get( 'update_successful' ), '</div>';
+} else if ( gpc_get_bool( 'invalid_keywords', false ) === true ) {
+    echo '<br /><div class="center"><span class="negative">', plugin_lang_get( 'query_invalid_keywords' ), '</span></div>';
+}
+
 $t_all_reports = custom_reports_get_all();
 ?>
 

@@ -15,4 +15,7 @@
    $s_plugin_CustomReports_general_configuration = 'Configuratie plugin';
    $s_plugin_CustomReports_admin_threshold = 'Drempelwaarde voor administratierechten';
    $s_plugin_CustomReports_view_custom_reports_threshold = 'Drempelwaarde voor bekijken rapporten op maat';
+
+   $s_plugin_CustomReports_update_successful = 'Query succesvol aangepast.';
+   $s_plugin_CustomReports_query_invalid_keywords = 'Query mag enkel SELECT\'s bevatten en geen DDL of DCL keywords.';
 ?>

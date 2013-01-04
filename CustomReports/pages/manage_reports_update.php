@@ -9,6 +9,23 @@ $f_report_name = gpc_get_string( 'report_name', null );
 $f_view_threshold = gpc_get_string( 'view_threshold', null );
 $f_query = htmlspecialchars( gpc_get_string( 'query', null ), ENT_QUOTES );
 
+$t_test_query = ' ' . $f_query . ' ';
+
+if ( stripos( $t_test_query, ' INSERT ' ) !== false ||
+    stripos( $t_test_query, ' UPDATE ' ) !== false ||
+    stripos( $t_test_query, ' DELETE ' ) !== false ||
+    stripos( $t_test_query, ' CREATE ' ) !== false ||
+    stripos( $t_test_query, ' ALTER ' ) !== false ||
+    stripos( $t_test_query, ' DROP ' ) !== false ||
+    stripos( $t_test_query, ' TRUNCATE ' ) !== false ||
+    stripos( $t_test_query, ' COMMENT ' ) !== false ||
+    stripos( $t_test_query, ' RENAME ' ) !== false ||
+    stripos( $t_test_query, ' GRANT ' ) !== false ||
+    stripos( $t_test_query, ' REVOKE ' ) !== false ) {
+    form_security_purge( 'plugin_CustomReport_update' );
+    print_successful_redirect( plugin_page( 'manage_reports_overview_page&invalid_keywords=true', true ) );
+}
+
 $t_reports_table = plugin_table( 'reports' );
 
 if ( empty( $f_report_id ) ) {
@@ -25,5 +42,5 @@ if ( empty( $f_report_id ) ) {
 }
 
 form_security_purge( 'plugin_CustomReport_update' );
-print_successful_redirect( plugin_page( 'manage_reports_overview_page', true ) );
+print_successful_redirect( plugin_page( 'manage_reports_overview_page&success=true', true ) );
 ?>
