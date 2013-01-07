@@ -8,7 +8,7 @@ $f_report_id = gpc_get_int( 'report_id', null );
 $f_report_name = gpc_get_string( 'report_name', null );
 $f_view_threshold = gpc_get_string( 'view_threshold', null );
 $f_query = htmlspecialchars( gpc_get_string( 'query', null ), ENT_QUOTES );
-$f_include_period = gpc_get_bool( 'include_period', false );
+$f_include_period = ( gpc_get_bool( 'include_period', false ) ? 1 : 0 );
 
 $t_test_query = ' ' . $f_query . ' ';
 
