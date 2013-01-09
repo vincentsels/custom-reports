@@ -61,11 +61,11 @@ if ( $f_export && !is_null( $f_selected_report_id ) && count( $t_result ) > 0 ) 
                         echo plugin_lang_get( 'period_start' ) . ': ';
                         echo '<input type="text" size="8" maxlength="10" autocomplete="off" id="param_period_start" name="param_period_start" value="' . $f_param_period_start . '">';
                         date_print_calendar( 'period_start_cal' );
-                        date_finish_calendar( 'period_start', 'period_start_cal' );
+                        date_finish_calendar( 'param_period_start', 'period_start_cal' );
                         echo ' - ' . plugin_lang_get( 'period_end' ) . ': ';
                         echo '<input type="text" size="8" maxlength="10" autocomplete="off" id="param_period_end" name="param_period_end" value="' . $f_param_period_end . '">';
                         date_print_calendar( 'period_end_cal' );
-                        date_finish_calendar( 'period_end', 'period_end_cal' );
+                        date_finish_calendar( 'param_period_end', 'period_end_cal' );
                         ?>
                     </div>
 					<input type="submit" value="<?php echo plugin_lang_get( 'load_report' ) ?>"/>
